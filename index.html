@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Daily Life Handcrafted</title>
+  <style>
+    :root{--paper:#fff7e9;--ink:#503b2d;--rust:#ae4f32;--sage:#879b70;--line:#e8d4b7;--card:#f5e8d1;--white:#fffdf8}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background-color:var(--paper);background-image:radial-gradient(#e9d5b8 1px,transparent 1px);background-size:18px 18px}
+    nav{min-height:94px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:18px 16px;border-bottom:2px dashed var(--line);background:rgba(255,247,233,.94)}
+    nav a{display:inline-block;color:var(--ink);text-decoration:none;border:1px dashed var(--line);border-radius:30px;padding:15px 24px;background:var(--white);font-weight:600}
+    nav a:hover{border-color:var(--rust)}
+    main{width:min(900px,calc(100% - 32px));margin:112px auto 64px;text-align:center}
+    h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(38px,7vw,68px);line-height:1.1;color:var(--rust);margin:0 0 34px;font-weight:700;letter-spacing:-1px}
+    .rule{border:0;border-top:3px dashed var(--sage);margin:0 40px 28px}
+    .tagline{display:inline-block;background:var(--white);border:1px dashed var(--line);border-radius:50px;padding:18px 34px;font-family:Georgia,serif;font-style:italic;font-size:clamp(18px,3vw,25px);color:#5d795b;margin:0 auto 54px}
+    .feature{max-width:830px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;text-align:left;box-shadow:0 8px 22px rgba(100,70,40,.06)}
+    .feature-head{display:flex;align-items:center;gap:18px;padding:28px 38px;border-top:3px dashed #b6bd99}
+    .logo{width:66px;height:66px;border:2px solid var(--rust);border-radius:50%;display:grid;place-items:center;background:var(--white);color:var(--rust);font-family:Georgia,serif;font-size:25px;font-weight:bold;flex-shrink:0}
+    .feature-head h2{font-family:Georgia,serif;font-size:25px;margin:0}
+    .content{padding:28px 32px 34px;background:rgba(255,253,248,.78);border-top:1px solid var(--line)}
+    .content h3{font-family:Georgia,serif;font-size:27px;margin:0 0 12px}
+    .content p{line-height:1.65;margin:10px 0}
+    .destination{font-size:13px;overflow-wrap:anywhere;color:#66564a;background:#fff7e9;padding:12px;border:1px solid var(--line);border-radius:10px}
+    .button{display:inline-block;margin-top:16px;background:var(--rust);color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:28px}
+    .button:hover{filter:brightness(.94)}
+    footer{text-align:center;padding:22px 12px 38px;color:#796957;font-size:13px}
+    footer a{color:inherit;margin:0 8px}
+    @media(max-width:520px){nav{gap:7px}nav a{padding:11px 14px;font-size:14px}main{margin-top:65px}.feature-head{padding:22px}.content{padding:24px 20px}.rule{margin-left:8px;margin-right:8px}.tagline{margin-bottom:36px}}
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation">
+    <a href="./">Home</a><a href="#about">About</a><a href="#privacy">Privacy Policy</a><a href="#terms">Terms</a><a href="#contact">Contact</a>
+  </nav>
+  <main>
+    <h1>Daily Life Handcrafted</h1>
+    <hr class="rule">
+    <p class="tagline">Simple recipes, made by hand.</p>
+    <section class="feature" aria-labelledby="site-title">
+      <div class="feature-head"><div class="logo" aria-hidden="true">D</div><h2 id="site-title">Daily Life Handcrafted</h2></div>
+      <div class="content">
+        <h3 id="article-title">Discover our latest project</h3>
+        <p id="article-description">Choose an article below to continue to the matching page on our website.</p>
+        <p class="destination" id="destination-label">Article destination will appear here.</p>
+        <a class="button" id="article-link" href="https://example.com/">Continue to article</a>
+        <p id="notice" aria-live="polite" style="font-size:13px;color:#796957">You will open the article shown above.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span id="about">About</span> · <span id="privacy">Privacy Policy</span> · <span id="terms">Terms</span> · <span id="contact">Contact</span>
+    <p>Daily Life Handcrafted</p>
+  </footer>
+  <script>
+    // Replace example.com with your own domain and add your real article paths below.
+    // Each id must exactly match one of these keys. Unknown IDs are rejected.
+    const articles = {
+      "/mini-crochet-ideas-cute-10-minute-crochet-keychains-easy-projects/": {
+        title: "Mini Crochet Ideas: Cute 10-Minute Crochet Keychains",
+        description: "Explore the full crochet project and instructions on our website.",
+        url: "https://example.com/mini-crochet-ideas-cute-10-minute-crochet-keychains-easy-projects/"
+      },
+      "/crochet-blanket-pattern/": {
+        title: "Crochet Blanket Pattern",
+        description: "Open the full blanket pattern and details on our website.",
+        url: "https://example.com/crochet-blanket-pattern/"
+      },
+      "/easy-crochet-bag/": {
+        title: "Easy Crochet Bag",
+        description: "Open the complete bag project on our website.",
+        url: "https://example.com/easy-crochet-bag/"
+      }
+    };
+    const id = new URLSearchParams(window.location.search).get("id");
+    const article = id && articles[id];
+    const title = document.getElementById("article-title");
+    const description = document.getElementById("article-description");
+    const destination = document.getElementById("destination-label");
+    const link = document.getElementById("article-link");
+    const notice = document.getElementById("notice");
+    if (article && /^https:\/\//i.test(article.url) && new URL(article.url).hostname === "example.com") {
+      title.textContent = article.title;
+      description.textContent = article.description;
+      destination.textContent = "Destination: " + article.url;
+      link.href = article.url;
+    } else {
+      title.textContent = "Welcome to Daily Life Handcrafted";
+      description.textContent = "Use a valid article link to open a specific project. The final destination is shown before you continue.";
+      destination.textContent = "No article selected. Please use a valid link from this site.";
+      link.removeAttribute("href");
+      link.style.display = "none";
+      notice.textContent = "Invalid or missing article ID.";
+    }
+  </script>
+</body>
+</html>
